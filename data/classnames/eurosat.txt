@@ -1,0 +1,10 @@
+0	Annual Crop Land
+1	Forest
+2	Herbaceous Vegetation Land
+3	Highway or Road
+4	Industrial Buildings
+5	Pasture Land
+6	Permanent Crop Land
+7	Residential Buildings
+8	River
+9	Sea or Lake

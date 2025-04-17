@@ -1,0 +1,7 @@
+Bootstrap: docker
+From: nvcr.io/nvidia/pytorch:23.04-py3
+%post
+    # Install packages via pip 
+    pip install setuptools
+    pip install kornia seaborn h5py tqdm pytorch-ignite opencv-python umap-learn timm>=1.0.7 imageio dill psutil regex imgui glfw pyspng ftfy ninja pandas openai-clip nltk sentence-transformers joblib skscope scikit-learn open_clip_torch huggingface_hub webdataset
+  

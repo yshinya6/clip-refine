@@ -1,0 +1,43 @@
+pattern: Contrastive
+main: main/train.py
+epoch: 1
+batchsize: 512
+experiment_iterations: 1
+train_val_split_ratio: 0.99
+snapshot_interval: 1
+log_metrics: ["modality_gap"]
+
+models:
+  pattern: CLIP-ViT-B_32
+  model:
+    func: model/mod_clip.py
+    name: CLIP
+    args:
+      backbone_name: "ViT-B/32"
+
+dataset:
+  dataset_func: data/coco_caption.py
+  dataset_name: COCOCaption
+  args:
+    tokenizer: null
+    transform: null
+    test: False
+
+dataset_cls:
+  dataset_func: data/generic.py
+  dataset_name: ImageNet
+  use_ratio: 0.01
+  classname_file: "data/classnames/imagenet.txt"
+  args:
+    transform: null
+    test: True
+
+optimizer:
+  algorithm: AdamW
+  args:
+    lr: 1.0e-6
+    weight_decay: 0.1
+    
+updater:
+  func: updater/contrastive.py
+  name: CLIPUpdater
