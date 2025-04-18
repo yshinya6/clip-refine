@@ -25,3 +25,13 @@ python3 main/train.py --config_path config/01_post-pre-training/clip-refine.yaml
 ```sh
 python3 main/test.py --config_path config/01_post-pre-training/clip-refine.yaml
 ```
+
+## Citation
+```bibtex
+@inproceedings{Yamaguchi_CVPR25_CLIP-Refine,
+  title={Post-pre-training for Modality Alignment in Vision-Language Foundation Models},
+  author={Yamaguchi, Shin'ya and Feng, Dewei and Kanai, Sekitoshi and Adachi, Kazuki and Chijiwa, Daiki},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  year={2025}
+}
+```
