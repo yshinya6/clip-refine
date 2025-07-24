@@ -9,7 +9,6 @@ import open_clip
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from loralib.utils import apply_lora, mark_only_lora_as_trainable
 
 OPENCLIP_DATASET = {"ViT-H-14": "laion2b_s32b_b79k", "ViT-bigG-14": "laion2b_s39b_b160k"}
 
@@ -37,15 +36,10 @@ class CLIP(torch.nn.Module):
         backbone_name="ViT-B/32",
         feat_dim=2048,
         init_logit_scale=np.log(1 / 0.01),
-        lora_params=None,
     ):
         super().__init__()
         # Load Backbone Vision-Language Model
         self.backbone, self.img_preprocess, self.tokenizer = load_model(backbone_name)
-        if lora_params:
-            lora_params["backbone"] = backbone_name
-            apply_lora(lora_params, self.backbone)
-            mark_only_lora_as_trainable(self.backbone)
         self.feat_dim = feat_dim
         self.convert_models_to_fp32()
         self.logit_scale = torch.nn.Parameter(torch.ones([]) * init_logit_scale)
